@@ -20,6 +20,9 @@ importers:
       gsap:
         specifier: ^3.12.7
         version: 3.12.7
+      letterizejs:
+        specifier: ^2.0.1
+        version: 2.0.1
       next:
         specifier: 15.2.1
         version: 15.2.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -451,6 +454,9 @@ packages:
   jiti@2.4.2:
     resolution: {integrity: sha512-rg9zJN+G4n2nfJl5MW3BMygZX56zKPNVEYYqq7adpmMh4Jn2QNEwhvQlFy6jPVdcod7txZtKHWnyZiA3a0zP7A==}
     hasBin: true
+
+  letterizejs@2.0.1:
+    resolution: {integrity: sha512-ofKV11GGUdEZELXSwR97AteC3Uv9cmLt7IB+L5BLyMp8khDBCwGs+B+c6FHoL/n7vAPC2aeva5WU3gdOuFIhmA==}
 
   lightningcss-darwin-arm64@1.29.1:
     resolution: {integrity: sha512-HtR5XJ5A0lvCqYAoSv2QdZZyoHNttBpa5EP9aNuzBQeKGfbyH5+UipLWvVzpP4Uml5ej4BYs5I9Lco9u1fECqw==}
@@ -1017,6 +1023,8 @@ snapshots:
     optional: true
 
   jiti@2.4.2: {}
+
+  letterizejs@2.0.1: {}
 
   lightningcss-darwin-arm64@1.29.1:
     optional: true

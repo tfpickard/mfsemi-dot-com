@@ -7,6 +7,7 @@ import dynamic from "next/dynamic";
 //import LorenzAttractor from "../components/LorenzAttractor";
 const LorenzAttractor = dynamic(() => import("../components/LorenzAttractor"));
 const Smooth3DObject = dynamic(() => import("../components/Smooth3DObject"));
+const Fusion = dynamic(() => import("../components/Fusion"));
 
 export default function Demo() {
   const [stats, setStats] = useState({ quantum: 0, flux: 0, metric: 0 });
@@ -65,6 +66,9 @@ export default function Demo() {
         </div>
         <div className="attractor">
           <Smooth3DObject />
+        </div>
+        <div className="attractor">
+          <Fusion />
         </div>
         <div className="attractor">
           <LorenzAttractor />

@@ -1,6 +1,61 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
+
 export default function Products() {
+  const [Letterize, setLetterize] = useState(null);
+
+  useEffect(() => {
+    import("letterizejs").then((module) => {
+      setLetterize(() => module.default);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!Letterize) return;
+
+    function scrambleText(element) {
+      const originalText = element.innerText;
+      const characters = [...originalText];
+
+      // Scramble by shuffling characters (excluding spaces)
+      let scrambledArray = characters.map((char) =>
+        char === " " ? " " : randomChar(),
+      );
+
+      element.innerText = scrambledArray.join(""); // Set scrambled text
+
+      // Gradual unscrambling effect
+      setTimeout(() => {
+        let unscrambleIndex = 0;
+        const interval = setInterval(() => {
+          if (unscrambleIndex < characters.length) {
+            scrambledArray[unscrambleIndex] = characters[unscrambleIndex];
+            element.innerText = scrambledArray.join("");
+            unscrambleIndex++;
+          } else {
+            clearInterval(interval);
+            element.innerText = originalText; // Ensure full restoration
+          }
+        }, 50); // Controls unscrambling speed
+      }, 500); // Delay before unscrambling starts
+    }
+
+    function randomChar() {
+      const chars =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+      return chars[Math.floor(Math.random() * chars.length)];
+    }
+
+    // Select all text-containing elements
+    const textElements = Array.from(document.body.querySelectorAll("*")).filter(
+      (el) => el.childNodes.length === 1 && el.innerText.trim() !== "",
+    ); // Ensure only elements with direct text
+
+    textElements.forEach(scrambleText);
+  }, [Letterize]);
+
   return (
     <>
       <Head>

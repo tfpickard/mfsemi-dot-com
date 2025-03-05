@@ -13,6 +13,7 @@
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.8.1",
     "gsap": "^3.12.7",
+    "letterizejs": "^2.0.1",
     "next": "15.2.1",
     "p5": "^1.11.3",
     "react": "^19.0.0",
