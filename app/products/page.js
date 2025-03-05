@@ -46,7 +46,7 @@ export default function Products() {
               clearInterval(interval);
               node.nodeValue = originalText;
             }
-          }, 50);
+          }, 500);
         }, 500);
       });
     }
