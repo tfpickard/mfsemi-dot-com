@@ -11,7 +11,8 @@ export default function LorenzAttractor() {
 
   useEffect(() => {
     // Ensure the code only runs in the browser
-    if (typeof window !== "undefined") {
+    if (1) {
+      // }typeof window !== "undefined") {
       const sketch = (p) => {
         let x = Math.random(),
           y = Math.random(),

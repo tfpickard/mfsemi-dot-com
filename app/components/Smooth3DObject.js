@@ -9,7 +9,8 @@ export default function Smooth3DObject() {
 
   useEffect(() => {
     // Ensure the code only runs in the browser
-    if (typeof window !== "undefined") {
+    if (1) {
+      //}typeof window !== "undefined") {
       const sketch = (p) => {
         let x = 0.1,
           y = 0,
