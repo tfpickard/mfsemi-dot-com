@@ -5,6 +5,10 @@
   --foreground: #171717;
 }
 
+.attractor {
+  width: 100%;
+  height: 400px;
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
