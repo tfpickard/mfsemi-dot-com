@@ -2,7 +2,7 @@
 import React, { useRef, useEffect } from "react";
 //import p5 from "p5";
 import dynamic from "next/dynamic";
-const p5 = dynamic(import("p5"), { ssr: false });
+const p5 = dynamic(() => import("p5"), { ssr: false });
 const scale = 2;
 const pscale = 1.01;
 
