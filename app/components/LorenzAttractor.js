@@ -84,7 +84,9 @@ export default function LorenzAttractor() {
 
       const myP5 = new p5(sketch, sketchRef.current);
       return () => {
-        myP5.remove();
+        if (myP5 && typeof myP5.remove === "function") {
+          myP5.remove();
+        }
       };
     }
   }, []);
