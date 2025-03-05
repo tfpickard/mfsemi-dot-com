@@ -91,5 +91,5 @@ export default function LorenzAttractor() {
     }
   }, []);
 
-  return <div ref={sketchRef}></div>;
+  return <div ref={sketchRef} style={{ width: "100%", height: "100%" }}></div>;
 }
