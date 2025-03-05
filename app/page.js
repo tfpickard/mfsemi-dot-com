@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { useEffect } from "react";
 import Head from "next/head";
@@ -23,7 +24,7 @@ export default function Home() {
 
       const chromata = new Chromata(image, {
         pathFinderCount: 15,
-        speed: 9,
+        speed: 8,
         turningAngle: Math.PI / 2,
         colorMode: "color",
         lineWidth: 2,
@@ -74,7 +75,7 @@ export default function Home() {
   );
 }
 
-i; /*
+/*
 export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">

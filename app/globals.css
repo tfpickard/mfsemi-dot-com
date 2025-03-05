@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #dab6a1;
   --foreground: #171717;
 }
 
@@ -14,13 +14,215 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #1a1a1a;
+    --background: #dab6a1;
   }
 }
 
 body {
+  margin: 0;
+  padding: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /*background-color: #1a1a1a;*/
+  font-family: "Roboto Mono", monospace;
+  text-align: left; /* Align text to the right for better vertical alignment */
+  /*color: #f5cc00;*/
+}
+
+/*body {*/
+/*  background: var(--background);*/
+/*  color: var(--foreground);*/
+/*  font-family: Arial, Helvetica, sans-serif;*/
+/*}*/
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background: #8b0000;
+  padding: 20px;
+  text-align: center;
+  z-index: 1000;
+  /*position: relative;*/
+  opacity: 0.9;
+  animation: pulse 9.87654s infinite;
+  /*transition: opacity 0.3s ease-in-out; */
+}
+
+header .logo h1 {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: 2px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0 0 0;
+}
+
+nav ul li {
+  margin: 0 15px;
+  transition: transform 0.3s ease;
+}
+
+nav ul li:hover {
+  transform: scale(1.1);
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+}
+
+footer {
+  background: #3a0000;
+  color: #f5cc00;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Banner and Buttons */
+.banner {
+  margin: 20px 0;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid #f5cc00;
+  animation: pulse 2s infinite;
+}
+
+.order-btn {
+  background: #f5cc00;
+  color: #1a1a1a;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.order-btn:hover {
+  background: #ffd700;
+}
+
+/* Page Specific Layout */
+.home,
+.about,
+.products,
+.careers,
+.blog,
+.demo .stats p {
+  margin: 5px 0;
+  font-family: "Roboto Mono", monospace; /* Use a monospaced font for alignment */
+  white-space: pre; /* Preserve spaces for alignment */
+}
+
+.careers {
+  position: relative;
+  z-index: 10; /* Ensure text is above particles */
+}
+
+.particles-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Ensure particles are behind text */
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
+  font-family: "Roboto", sans-serif;
+}
+
+/* Easter Egg Text */
+.easter-egg,
+.easter-egg-footer {
+  font-size: 0.8rem;
+  color: #ffd700;
+}
+
+/* Over-Engineered Animations */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px #ffd700;
+  }
+  50% {
+    text-shadow: 0 0 20px #ffd700;
+  }
+  100% {
+    text-shadow: 0 0 5px #ffd700;
+  }
+}
+
+.glow-text {
+  animation: glow 2s infinite;
+}
+.container {
+  /*position: relative;*/
+  width: 90vw;
+  height: 90vh;
+  /*width: 100%;*/
+  /*height: 100vh;*/
+}
+.img {
+  opacity: 0.3;
+}
+
+h1,
+h2,
+h3 {
+  color: #222;
+}
+.highlight {
+  background-color: yellow;
+  font-weight: bold;
+}
+.glow {
+  text-shadow: 0 0 10px #ff0000;
+}
+.pulsate {
+  animation: pulsate 1.5s infinite;
+}
+@keyframes pulsate {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.portrait {
+  display: block;
+  margin: auto;
+  width: 50%;
+  border: 3px solid #333;
+}
+.caption {
+  text-align: center;
+  font-style: italic;
+  font-size: 14px;
 }
