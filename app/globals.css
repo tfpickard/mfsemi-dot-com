@@ -1,25 +1,31 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;700&family=Raleway:wght@400;700&display=swap");
 
+/* Global Variables */
 :root {
   --background: #dab6a1;
   --foreground: #171717;
+  --header-bg: #8b0000;
+  --footer-bg: #3a0000;
+  --footer-text: #f5cc00;
+  --banner-bg: rgba(0, 0, 0, 0.5);
+  --banner-border: #f5cc00;
+  --banner-text: #dab64a;
+  --btn-bg: #f5cc00;
+  --btn-text: #1a1a1a;
+  --btn-hover: #ffd700;
+  --h1-gradient-start: #ff6ec4;
+  --h1-gradient-end: #7873f5;
+  --h1-text-shadow: rgba(0, 0, 0, 0.2);
+  --h2-color: #333;
+  --h2-hover: #7873f5;
+  --h3-color: #4a4a4a;
+  --accent: #ff6ec4;
+  --easter-egg: #ffd700;
+  --glow-color: #ff0000;
 }
 
-.attractor {
-  width: 100%;
-  height: 400px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
+/* Dark Mode Overrides */
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground: #1a1a1a;
@@ -27,138 +33,98 @@
   }
 }
 
+/* Base Styles */
 body {
-  margin: 0;
-  padding: 0;
+  @apply m-0 p-0 text-left;
   background: var(--background);
   color: var(--foreground);
-  /*background-color: #1a1a1a;*/
   font-family: "Roboto Mono", monospace;
-  text-align: left; /* Align text to the right for better vertical alignment */
-  /*color: #f5cc00;*/
 }
 
-/*body {*/
-/*  background: var(--background);*/
-/*  color: var(--foreground);*/
-/*  font-family: Arial, Helvetica, sans-serif;*/
-/*}*/
-
+/* Layout */
 .layout {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  @apply flex flex-col min-h-screen;
 }
 
+/* Attractor */
+.attractor {
+  @apply w-full flex justify-center items-center;
+  height: 400px;
+}
+
+/* Header */
 header {
-  background: #8b0000;
-  padding: 20px;
-  text-align: center;
-  z-index: 1000;
-  /*position: relative;*/
-  opacity: 0.9;
+  @apply p-5 text-center z-[1000] opacity-90;
+  background: var(--header-bg);
   animation: pulse 9.87654s infinite;
-  /*transition: opacity 0.3s ease-in-out; */
 }
-
 header .logo h1 {
-  margin: 0;
-  font-size: 2rem;
-  letter-spacing: 2px;
+  @apply m-0 text-2xl tracking-[2px];
 }
 
+/* Navigation */
 nav ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  margin: 10px 0 0 0;
+  @apply list-none p-0 flex justify-center mt-2.5;
 }
-
 nav ul li {
-  margin: 0 15px;
-  transition: transform 0.3s ease;
+  @apply mx-[15px] transition-transform duration-300 ease-in-out;
 }
-
 nav ul li:hover {
-  transform: scale(1.1);
+  @apply scale-110;
 }
 
+/* Main Content */
 main {
-  flex: 1;
-  padding: 20px;
+  @apply flex-1 p-5 max-w-3xl mx-auto;
 }
 
+/* Footer */
 footer {
-  background: #3a0000;
-  color: #f5cc00;
-  text-align: center;
-  padding: 10px;
+  @apply text-center p-2.5;
+  background: var(--footer-bg);
+  color: var(--footer-text);
 }
 
 /* Banner and Buttons */
 .banner {
-  margin: 20px 0;
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.5);
-  border: 2px solid #f5cc00;
-  animation: pulse 2s infinite;
+  @apply my-5 p-5 border-2 animate-[pulse_2s_infinite];
+  background: var(--banner-bg);
+  border-color: var(--banner-border);
+  color: var(--banner-text);
 }
-
 .order-btn {
-  background: #f5cc00;
-  color: #1a1a1a;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease;
+  @apply px-5 py-2.5 border-0 cursor-pointer transition-colors duration-300 ease-in-out;
+  background: var(--btn-bg);
+  color: var(--btn-text);
 }
-
 .order-btn:hover {
-  background: #ffd700;
+  background: var(--btn-hover);
 }
 
 /* Page Specific Layout */
 .home,
-.about,
 .products,
 .careers,
 .blog,
 .demo .stats p {
-  margin: 5px 0;
-  font-family: "Roboto Mono", monospace; /* Use a monospaced font for alignment */
-  white-space: pre; /* Preserve spaces for alignment */
+  @apply my-[5px] font-mono whitespace-pre;
 }
-
 .careers {
-  position: relative;
-  z-index: 10; /* Ensure text is above particles */
+  @apply relative z-10;
 }
-
 .particles-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1; /* Ensure particles are behind text */
-}
-
-/* Headings */
-h1,
-h2,
-h3 {
-  font-family: "Roboto", sans-serif;
+  @apply absolute top-0 left-0 w-full h-full;
+  z-index: 1;
 }
 
 /* Easter Egg Text */
 .easter-egg,
 .easter-egg-footer {
-  font-size: 0.8rem;
-  color: #ffd700;
+  @apply text-[0.8rem];
+  color: var(--easter-egg);
 }
 
-/* Over-Engineered Animations */
+/* Animations */
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -173,41 +139,34 @@ h3 {
 
 @keyframes glow {
   0% {
-    text-shadow: 0 0 5px #ffd700;
+    text-shadow: 0 0 5px var(--easter-egg);
   }
   50% {
-    text-shadow: 0 0 20px #ffd700;
+    text-shadow: 0 0 20px var(--easter-egg);
   }
   100% {
-    text-shadow: 0 0 5px #ffd700;
+    text-shadow: 0 0 5px var(--easter-egg);
   }
 }
-
 .glow-text {
   animation: glow 2s infinite;
 }
+
+/* Container */
 .container {
-  /*position: relative;*/
-  width: 90vw;
-  height: 90vh;
-  /*width: 100%;*/
-  /*height: 100vh;*/
+  @apply w-[90vw] h-[90vh];
 }
 .img {
-  opacity: 0.3;
+  @apply opacity-30;
 }
 
-h1,
-h2,
-h3 {
-  color: #222;
-}
+/* Highlight */
 .highlight {
   background-color: yellow;
-  font-weight: bold;
+  @apply font-bold;
 }
 .glow {
-  text-shadow: 0 0 10px #ff0000;
+  text-shadow: 0 0 10px var(--glow-color);
 }
 .pulsate {
   animation: pulsate 1.5s infinite;
@@ -223,44 +182,86 @@ h3 {
     opacity: 1;
   }
 }
+
+/* Portrait and Caption */
 .portrait {
-  display: block;
-  margin: auto;
-  width: 50%;
-  border: 3px solid #333;
+  @apply block mx-auto w-1/2;
+  border: 3px solid var(--h2-color);
 }
 .caption {
-  text-align: center;
-  font-style: italic;
-  font-size: 14px;
+  @apply text-center italic text-sm;
 }
 
-#smooth3d-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
-}
-
-#lorenz-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
-}
-
+/* 3D and Special Containers */
+#smooth3d-container,
+#lorenz-container,
 #hyperchaotic-blob-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  /*background-color: black;*/
+  @apply w-full h-full flex justify-center items-center relative;
+}
+#smooth3d-container,
+#lorenz-container {
+  @apply overflow-hidden;
+}
+
+/* Paragraph Styling */
+p {
+  text-align: justify;
+  text-align-last: justify;
+}
+
+/* Creative Heading Theme with Tailwind and Interesting Fonts */
+@layer base {
+  /* h1: Bold gradient text with hue-rotate animation using Playfair Display */
+  h1 {
+    @apply text-[3rem] font-bold m-0 my-2;
+    font-family: "Playfair Display", serif;
+    background-image: linear-gradient(
+      45deg,
+      var(--h1-gradient-start),
+      var(--h1-gradient-end)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 5px var(--h1-text-shadow);
+    animation: hueShift 6s linear infinite;
+  }
+  /* h2: Modern heading with Montserrat, with an accent underline and hover color change.
+     Increased top margin for more spacing above h2 */
+  h2 {
+    @apply text-[2.5rem] border-b-4 pb-1 transition-colors duration-300 ease-in-out mt-6 mb-2;
+    font-family: "Montserrat", sans-serif;
+    color: var(--h2-color);
+    border-color: var(--accent);
+  }
+  h2:hover {
+    color: var(--h2-hover);
+  }
+  /* h3: Refined heading using Raleway with a dynamic underline that expands on hover */
+  h3 {
+    @apply text-[2rem] relative tracking-wider my-2;
+    font-family: "Raleway", sans-serif;
+    color: var(--h3-color);
+  }
+  h3::after {
+    content: "";
+    @apply absolute left-0 block;
+    bottom: -5px;
+    width: 40px;
+    height: 3px;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+  }
+  h3:hover::after {
+    width: 80px;
+  }
+}
+
+/* Keyframes for Hue-Rotate Animation */
+@keyframes hueShift {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
 }

@@ -16,41 +16,64 @@ export default function Products() {
     if (!Letterize) return;
 
     function scrambleText(element) {
-      const originalText = element.innerText;
-      const characters = [...originalText];
+      const originalText = element.innerHTML;
+      const textNodes = getTextNodes(element);
 
-      // Generate scrambled characters (keep spaces intact)
-      let scrambledArray = characters.map((char) => (char === " " ? " " : randomChar()));
-      
-      element.innerText = scrambledArray.join(""); // Display scrambled text
+      // Scramble only text nodes, preserving structure
+      textNodes.forEach((node) => {
+        const originalText = node.nodeValue;
+        const characters = [...originalText];
 
-      // Generate random indices for unscrambling order
-      let indices = characters.map((_, i) => i).sort(() => Math.random() - 0.5); // Shuffle indices
+        let scrambledArray = characters.map((char) =>
+          char === " " ? " " : randomChar(),
+        );
 
-      setTimeout(() => {
-        let unscrambleIndex = 0;
-        const interval = setInterval(() => {
-          if (unscrambleIndex < indices.length) {
-            let idx = indices[unscrambleIndex];
-            scrambledArray[idx] = characters[idx];
-            element.innerText = scrambledArray.join("");
-            unscrambleIndex++;
-          } else {
-            clearInterval(interval);
-            element.innerText = originalText; // Ensure full restoration
-          }
-        }, 500); // Speed of unscrambling
-      }, 500); // Delay before unscrambling starts
+        node.nodeValue = scrambledArray.join("");
+
+        let indices = characters
+          .map((_, i) => i)
+          .sort(() => Math.random() - 0.5);
+
+        setTimeout(() => {
+          let unscrambleIndex = 0;
+          const interval = setInterval(() => {
+            if (unscrambleIndex < indices.length) {
+              let idx = indices[unscrambleIndex];
+              scrambledArray[idx] = characters[idx];
+              node.nodeValue = scrambledArray.join("");
+              unscrambleIndex++;
+            } else {
+              clearInterval(interval);
+              node.nodeValue = originalText;
+            }
+          }, 50);
+        }, 500);
+      });
     }
 
     function randomChar() {
-      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+      const chars =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
       return chars[Math.floor(Math.random() * chars.length)];
     }
 
-    // Select all text-containing elements
-    const textElements = Array.from(document.body.querySelectorAll("*"))
-      .filter((el) => el.childNodes.length === 1 && el.innerText.trim() !== ""); // Ensure only elements with direct text
+    function getTextNodes(element) {
+      let textNodes = [];
+      function scanNodes(node) {
+        if (node.nodeType === 3 && node.nodeValue.trim() !== "") {
+          textNodes.push(node);
+        } else {
+          node.childNodes.forEach(scanNodes);
+        }
+      }
+      scanNodes(element);
+      return textNodes;
+    }
+
+    // Select all visible elements but only scramble their text nodes
+    const textElements = Array.from(document.body.querySelectorAll("*")).filter(
+      (el) => el.childNodes.length > 0,
+    );
 
     textElements.forEach(scrambleText);
   }, [Letterize]);
@@ -61,6 +84,22 @@ export default function Products() {
         <title>MFSemi LLC - Products</title>
         <meta name="description" content="Explore our cutting-edge products." />
       </Head>
+      <nav>
+        <ul>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/about">About</a>
+          </li>
+          <li>
+            <a href="/products">Products</a>
+          </li>
+          <li>
+            <a href="/contact">Contact</a>
+          </li>
+        </ul>
+      </nav>
       <section className="products">
         <h1>Our Products</h1>
         <div className="product-list">
@@ -68,24 +107,21 @@ export default function Products() {
             <h2>Quantum Chip X-1</h2>
             <p>
               A revolutionary semiconductor chip engineered for quantum
-              processing. Experience unparalleled speed and precision.
+              processing.
             </p>
             <button>View Demo</button>
           </div>
           <div className="product-item">
             <h2>NeuroSync Board</h2>
             <p>
-              Bridging the gap between analog and digital, this board integrates
-              neural network principles into advanced circuit design.
+              Bridging the gap between analog and digital with neural
+              integration.
             </p>
             <button>View Demo</button>
           </div>
           <div className="product-item">
             <h2>Flux Capacitor 3000</h2>
-            <p>
-              An entirely fictional yet impressive-sounding product demo
-              designed to dazzle even the most critical technologists.
-            </p>
+            <p>A fictional product demo designed to impress technologists.</p>
             <button>View Demo</button>
           </div>
         </div>
