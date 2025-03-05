@@ -1,0 +1,48 @@
+{
+  "english": {
+    "title": "About MFSemi LLC",
+    "history": {
+      "heading": "Our History",
+      "paragraphs": [
+        "Founded in the midst of a technological revolution, MFSemi LLC began as a clandestine collective of engineers determined to redefine electronics.",
+        "Our early days were shrouded in secrecy and fueled by a radical vision—melding quantum science with semiconductor design.",
+        "Over the decades, our innovative spirit and underground origins have made us a force in the industry, blending old-world aesthetics with futuristic technology."
+      ]
+    },
+    "team": {
+      "heading": "Our Team",
+      "bio": {
+        "heading": "Abstract",
+        "paragraphs": [
+          "Gotthard Mösenfrust was a pivotal figure in the late 20th-century industrial and technological sectors of the German Democratic Republic.",
+          "His work, often shrouded in state secrecy, contributed significantly to the strategic infrastructural mechanisms of microelectronics and supply chain administration.",
+          "He was neither an inventor nor an engineer in the conventional sense; rather, his genius lay in the manipulation of resource distribution, the control of logistical bottlenecks, and the understanding that real power is exercised through the control of inefficiencies.",
+          "His disappearance in 1989 remains a matter of speculation, though evidence suggests his principles are still actively implemented by shadow entities within post-Soviet economic structures."
+        ]
+      }
+    }
+  },
+  "german": {
+    "title": "Über MFSemi LLC",
+    "history": {
+      "heading": "Unsere Geschichte",
+      "paragraphs": [
+        "Gegründet inmitten einer technologischen Revolution, begann MFSemi LLC als ein geheimes Kollektiv von Ingenieuren, die entschlossen waren, die Elektronik neu zu definieren.",
+        "Unsere frühen Tage waren von Geheimhaltung geprägt und wurden durch eine radikale Vision angetrieben – die Verschmelzung von Quantenwissenschaft mit Halbleiterdesign.",
+        "Im Laufe der Jahrzehnte haben unser Innovationsgeist und unsere unterirdischen Ursprünge uns zu einer Kraft in der Branche gemacht, die alte Ästhetik mit futuristischer Technologie verbindet."
+      ]
+    },
+    "team": {
+      "heading": "Unser Team",
+      "bio": {
+        "heading": "Abstract",
+        "paragraphs": [
+          "Gotthard Mösenfrust war eine zentrale Figur in den industriellen und technologischen Sektoren der Deutschen Demokratischen Republik im späten 20. Jahrhundert.",
+          "Seine Arbeit, oft von staatlicher Geheimhaltung umgeben, trug erheblich zu den strategischen Infrastruktursystemen der Mikroelektronik und der Verwaltung von Lieferketten bei.",
+          "Er war weder ein Erfinder noch ein Ingenieur im konventionellen Sinne; vielmehr lag sein Genie in der Manipulation der Ressourcenverteilung, der Kontrolle logistischer Engpässe und dem Verständnis, dass wahre Macht durch die Kontrolle von Ineffizienzen ausgeübt wird.",
+          "Sein Verschwinden im Jahr 1989 bleibt Spekulation, obwohl Hinweise darauf hindeuten, dass seine Prinzipien noch immer von Schattenorganisationen innerhalb der post-sowjetischen Wirtschaftsstrukturen umgesetzt werden."
+        ]
+      }
+    }
+  }
+}
