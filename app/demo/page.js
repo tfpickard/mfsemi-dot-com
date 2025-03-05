@@ -2,8 +2,11 @@
 
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
-import Smooth3DObject from "../components/Smooth3DObject";
-import LorenzAttractor from "../components/LorenzAttractor";
+import dynamic from "next/dynamic";
+//import Smooth3DObject from "../components/Smooth3DObject";
+//import LorenzAttractor from "../components/LorenzAttractor";
+const LorenzAttractor = dynamic(() => import("../components/LorenzAttractor"));
+const Smooth3DObject = dynamic(() => import("../components/Smooth3DObject"));
 
 export default function Demo() {
   const [stats, setStats] = useState({ quantum: 0, flux: 0, metric: 0 });
