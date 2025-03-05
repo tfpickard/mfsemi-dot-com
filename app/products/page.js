@@ -39,7 +39,7 @@ export default function Products() {
             clearInterval(interval);
             element.innerText = originalText; // Ensure full restoration
           }
-        }, 50); // Speed of unscrambling
+        }, 500); // Speed of unscrambling
       }, 500); // Delay before unscrambling starts
     }
 
